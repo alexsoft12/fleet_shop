@@ -33,6 +33,7 @@
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "*",
         "nunomaduro/collision": "^6.1",
+        "pestphp/pest": "^1.23",
         "spatie/laravel-ignition": "^1.0"
     },
     "autoload": {
@@ -60,7 +61,8 @@
         },
         "allow-plugins": {
             "wikimedia/composer-merge-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "pestphp/pest-plugin": true
         }
     },
     "extra": {
