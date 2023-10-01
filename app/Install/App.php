@@ -46,17 +46,17 @@ class App
     {
         Setting::setMany([
             'active_theme' => 'Storefront',
-            'supported_countries' => ['BD'],
-            'default_country' => 'BD',
-            'supported_locales' => ['en'],
-            'default_locale' => 'en',
-            'default_timezone' => 'Asia/Dhaka',
+            'supported_countries' => ['PE'],
+            'default_country' => 'PE',
+            'supported_locales' => ['es_PE'],
+            'default_locale' => 'es_PE',
+            'default_timezone' => 'America/Lima',
             'customer_role' => 2,
             'reviews_enabled' => true,
             'auto_approve_reviews' => true,
             'cookie_bar_enabled' => true,
-            'supported_currencies' => ['USD'],
-            'default_currency' => 'USD',
+            'supported_currencies' => ['PEN'],
+            'default_currency' => 'PEN',
             'send_order_invoice_email' => false,
             'store_email' => 'admin@fleetcart.test',
             'newsletter_enabled' => false,
@@ -95,11 +95,13 @@ class App
             ],
             'storefront_copyright_text' => 'Copyright © <a href="{{ store_url }}">{{ store_name }}</a> {{ year }}. All rights reserved.',
         ]);
+
     }
 
     private function createDefaultCurrencyRate()
     {
         CurrencyRate::create(['currency' => 'USD', 'rate' => 1]);
+        CurrencyRate::create(['currency' => 'PEN', 'rate' => 1]);
     }
 
     private function createStorageFolder()

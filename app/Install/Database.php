@@ -10,8 +10,8 @@ class Database
 {
     public function setup($data)
     {
-        $this->checkDatabaseConnection($data);
-        $this->setEnvVariables($data);
+//        $this->checkDatabaseConnection($data);
+//        $this->setEnvVariables($data);
         $this->migrateDatabase();
     }
 

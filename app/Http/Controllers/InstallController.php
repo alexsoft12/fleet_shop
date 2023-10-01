@@ -27,27 +27,36 @@ class InstallController extends Controller
 
     public function getConfiguration(Requirement $requirement)
     {
-        if (! $requirement->satisfied()) {
+        if (!$requirement->satisfied()) {
             return redirect()->route('install.pre_installation');
         }
+        $this->postConfiguration();
 
-        return view('install.configuration', compact('requirement'));
+       // return view('install.configuration', compact('requirement'));
     }
 
-    public function postConfiguration(
-        InstallRequest $request,
-        Database $database,
-        AdminAccount $admin,
-        Store $store,
-        App $app
-    ) {
+    public function postConfiguration()
+    {
         @set_time_limit(0);
 
         try {
-            $database->setup($request->db);
-            $admin->setup($request->admin);
-            $store->setup($request->store);
-            $app->setup();
+            (new Database)->setup([]);
+            (new AdminAccount)->setup([
+                'first_name' => 'Jhon',
+                'last_name' => 'Doe',
+                'email' => 'admin@example.com',
+                'phone' => '+1985965369',
+                'password' => 'password',
+            ]);
+            (new Store)->setup([
+                'store_name' => 'My App',
+                'store_email' => 'myapp@example.com',
+                'store_phone' => '+1985632586',
+                'search_engine' => 'mysql',
+                'algolia_app_id' => '',
+                'algolia_secret' => '',
+            ]);
+            (new App)->setup();
         } catch (Exception $e) {
             return back()->withInput()
                 ->with('error', $e->getMessage());
