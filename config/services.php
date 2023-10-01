@@ -42,4 +42,9 @@ return [
         'channel' => env('PAYTM_CHANNEL'),
         'industry_type' => env('PAYTM_INDUSTRY_TYPE'),
     ],
+
+    'microsoft_translator' => [
+        'key' => env('MICROSOFT_TRANSLATOR_KEY'),
+        'location' => env('MICROSOFT_TRANSLATOR_LOCATION'),
+    ],
 ];

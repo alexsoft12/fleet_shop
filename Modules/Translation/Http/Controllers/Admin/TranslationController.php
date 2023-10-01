@@ -2,6 +2,7 @@
 
 namespace Modules\Translation\Http\Controllers\Admin;
 
+use FleetCart\Jobs\TranslateJob;
 use Modules\Translation\Entities\Translation;
 
 class TranslationController
@@ -13,6 +14,7 @@ class TranslationController
      */
     public function index()
     {
+        TranslateJob::dispatch();
         $translations = Translation::retrieve();
 
         return view('translation::admin.translations.index', compact('translations'));
